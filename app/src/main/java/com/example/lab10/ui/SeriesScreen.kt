@@ -176,10 +176,22 @@ private fun SerieEditor(
                 }
                 scope.launch {
                     saving = true
-                    val body = SerieModel(serie?.id ?: 0, name, releaseDate, ratingValue, category)
+                    val body = SerieModel(
+                        serie?.id ?: 0,
+                        name.trim(),
+                        releaseDate.trim(),
+                        ratingValue,
+                        category.trim().lowercase()
+                    )
                     runCatching {
-                        if (serie == null) ApiClient.serieApi.insertSerie(body)
+                        val response = if (serie == null) {
+                            ApiClient.serieApi.insertSerie(body)
+                        }
                         else ApiClient.serieApi.updateSerie(serie.id, body)
+                        if (!response.isSuccessful) {
+                            val detail = response.errorBody()?.string().orEmpty()
+                            error("HTTP ${response.code()}: $detail")
+                        }
                     }.onSuccess { onSaved() }
                         .onFailure { onError("No se pudo guardar: ${it.message}") }
                     saving = false
