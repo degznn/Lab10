@@ -1,16 +1,22 @@
-# React + Vite
+# Laboratorio S10 Gestion de productos
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+Aplicacion React creada con Vite para registrar y listar productos temporales en memoria.
 
-Currently, two official plugins are available:
+## Funcionalidades
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+- Cinco productos iniciales con codigo, descripcion, precio y categoria.
+- Registro de productos mediante un formulario validado.
+- Generacion automatica de codigos sin duplicados.
+- Actualizacion inmediata de la tabla usando `useState`.
+- Botones para registrar y limpiar el formulario.
+- Mensajes de validacion y confirmacion.
+- Interfaz adaptable construida con Tailwind CSS y componentes reutilizables.
 
-## React Compiler
+## Ejecucion
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+```bash
+npm install
+npm run dev
+```
 
-## Expanding the Oxlint configuration
-
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and Oxlint's TypeScript related rules in your project.
+La informacion se conserva solo durante la sesion porque la tarea utiliza datos simulados en memoria.
